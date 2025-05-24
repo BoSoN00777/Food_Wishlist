@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mom's Food Wishlist</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: #fff8dc;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background: #ff6347;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 2em;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      #menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .dish {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 280px;
+        animation: popIn 0.8s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .dish:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .dish img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .dish-desc {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .dish-desc h2 {
+        margin: 0 0 10px 0;
+        color: #d2691e;
+        font-size: 1.4em;
+      }
+
+      .dish-desc p {
+        font-size: 1.1em;
+        color: #555;
+      }
+
+      @keyframes popIn {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .dish {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Mom, Here's Why I Deserve These Yummies 🍽️💖</header>
+    <div id="menu"></div>
+    <script src="index.js"></script>
+    <script>
+      const menuDiv = document.getElementById("menu");
+      dishes.forEach((dish) => {
+        const dishDiv = document.createElement("div");
+        dishDiv.className = "dish";
+        dishDiv.innerHTML = `
+          <img src="${dish.img}" alt="${dish.name}" />
+          <div class="dish-desc">
+            <h2>${dish.name}</h2>
+            <p>${dish.reason}</p>
+          </div>
+        `;
+        menuDiv.appendChild(dishDiv);
+      });
+    </script>
+  </body>
+</html>
